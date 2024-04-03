@@ -13,7 +13,8 @@ public class Main {
             Integer numberAccount = sc.nextInt();
 
             System.out.print("DIGITE O NOME DO PROPRIETÁRIO DA CONTA: ");
-            String holderName = sc.next();
+            sc.nextLine();
+            String holderName = sc.nextLine().trim();
 
             System.out.print("DIGITE O MONTANTE INICIAL: ");
             double initialBalance = sc.nextDouble();
@@ -23,6 +24,12 @@ public class Main {
 
             Account conta = new Account(numberAccount, holderName, initialBalance, withDrawLimit);
 
+            System.out.println();
+            System.out.print(" DIGITE UM VALOR PARA SACAR: ");
+            double amount = sc.nextDouble();
+
+            conta.withDraw(amount);
+
         } catch (InputMismatchException e) {
             e.printStackTrace();
 
@@ -30,5 +37,6 @@ public class Main {
             e.getMessage();
             e.printStackTrace();
         }
+        sc.close();
     }
 }

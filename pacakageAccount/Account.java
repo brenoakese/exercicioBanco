@@ -56,8 +56,11 @@ public class Account {
     public void withDraw(double amount) throws DomainException {
         if (amount > getWithDrawLimit()) {
             throw new DomainException("ERROR: O LIMITE DE SAQUE É MENOR QUE O VALOR SOLICITADO");
+        } else if (amount > getBalance()) {
+            throw new DomainException("ERROR: O SEU SALDO É INFERIOR AO VALOR INFORMADO");
         } else {
             this.balance = this.balance - amount;
         }
     }
+
 }
